@@ -23,7 +23,7 @@ fi
 #export LIBRARY_PATH=<paths>:$LIBRARY_PATH
 #if you have custom dynamic library paths, uncomment below and export them
 #export LD_LIBRARY_PATHS=<paths>:$LD_LIBRARY_PATHS
-export NETCDFINC=/usr/include/openmpi-x86_64/
+export NETCDFINC=/usr/local/include/ #/usr/include/openmpi-x86_64/
 
 
 if  [[ "$build_mc_kernel" == true ]]; then
@@ -86,7 +86,7 @@ if [[ "$build_framework" == true ]]; then
   ##python setup.py --use-cython install
   ##python setup.py --use-cython develop
   python setup.py build_ext --inplace --use-cython || exit
-  pip install -e . || exit
+  uv pip install -e . || exit
 fi
 
 if [[ "$build_routing" == true ]]; then
@@ -96,5 +96,5 @@ if [[ "$build_routing" == true ]]; then
   #python setup.py --use-cython install
   #python setup.py --use-cython develop
   python setup.py build_ext --inplace --use-cython || exit
-  pip install -e . || exit
+  uv pip install -e . || exit
 fi
